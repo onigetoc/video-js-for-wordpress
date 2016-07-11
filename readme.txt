@@ -1,4 +1,4 @@
-=== Video.js - HTML5 Video Player for Wordpress ===
+=== HTML5 Video Player for Wordpress ===
 Contributors: onigetoc, nosecreek, Steve Heffernan, schnere
 Donate link: http://www.scriptsmashup.com/donation
 Tags: html5, video, player, javascript
@@ -14,11 +14,15 @@ Embed MP4, M4V, OGG, Youtube, WebM, FLV videos in your post or page using HTML5.
 
 A video plugin for WordPress built on the Video.js HTML5 video player library. Now updated for Videojs 5.0+ with a more beautifull skin. Allows you to embed video in your post or page using HTML5 with Flash fallback support for non-HTML5 browsers. Flash fallback for browser compatibility. Video player for WordPress, built on the widely used Video.js HTML5 video player. 
 
-Compatibility with the Wordpress core [video] shortcode and work with the Wordpress insert media button.
+Compatible with the Wordpress core [video] shortcode and work with the Wordpress insert media button.
 
 Videojs didn't not update their Videojs to 5.0+ for Wordpress and i decided to do it and share it on the Wordpress plugins page.
 
 View [videojs.com](http://videojs.com) for additional information.
+
+* Use the [videojs] shortcode in your post or page using the following options.
+* Can use the Wordpress default [video] shortcode.
+* Compatible with the old Videojs version.
 
 == Installation ==
 
@@ -27,12 +31,11 @@ This section describes how to install the plugin and get it working.
 1. Upload the `videojs-html5-video-player-for-wordpress` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Use the [videojs] shortcode in your post or page using the following options.
-4. Can use the Wordpress default [video] shortcode.
 
 == Screenshots ==
 
 1. Settings and options
-2. Demo live search
+2. Basic Skin
 
 ##Video Shortcode Options
 -------------------------
@@ -137,7 +140,7 @@ Uncheck the *Use the [video] shortcode?* option __only__ if you are using WordPr
 
 = 5.0 =
 
-* Updated to use Video.js 5.6
+* Updated to use Video.js 5.4.6
 * Fluide videos
 * Remove useless CSS
 
