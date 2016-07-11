@@ -8,11 +8,11 @@ Stable tag: 4.5.0
 License: LGPLv3
 License URI: http://www.gnu.org/licenses/lgpl-3.0.html
 
-Embed MP4, M4V, OGG, Youtube, WebM, FLV videos in your post or page using HTML5. Self-hosted or CDN hosted responsive HTML4 Video player.
+Embed MP4, M4V, OGG, Youtube, WebM, FLV videos in your post or page using HTML5. Self-hosted or CDN hosted responsive HTML5 Video player.
 
 == Description ==
 
-A video plugin for WordPress built on the Video.js HTML5 video player library. Now updated for Videojs 5.0+. Allows you to embed video in your post or page using HTML5 with Flash fallback support for non-HTML5 browsers. Flash fallback for browser compatibility. Video player for WordPress, built on the widely used Video.js HTML5 video player. 
+A video plugin for WordPress built on the Video.js HTML5 video player library. Now updated for Videojs 5.0+ with a more beautifull skin. Allows you to embed video in your post or page using HTML5 with Flash fallback support for non-HTML5 browsers. Flash fallback for browser compatibility. Video player for WordPress, built on the widely used Video.js HTML5 video player. 
 
 Compatibility with the Wordpress core [video] shortcode and work with the Wordpress insert media button.
 
