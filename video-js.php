@@ -11,36 +11,36 @@ Author: <a href="http://www.nosecreekweb.ca">Dustin Lammiman</a>, <a href="http:
 Version: 4.5.0
 */
 
+define('NAME', 'Video.js');
+/*************** DEFINE ***************/
+
 
 $plugin_dir = plugin_dir_path( __FILE__ );
-
 
 /* The options page */
 include_once($plugin_dir . 'admin.php');
 
-
 /* Useful Functions */
 include_once($plugin_dir . 'lib.php');
-
 
 /* Register the scripts and enqueue css files */
 function register_videojs(){
 	$options = get_option('videojs_options');
 	
-	wp_register_style( 'videojs-plugin', plugins_url( 'plugin-styles.css' , __FILE__ ) );
-	wp_enqueue_style( 'videojs-plugin' );
+	//wp_register_style( 'videojs-plugin', plugins_url( 'plugin-styles.css' , __FILE__ ) );
+	//wp_enqueue_style( 'videojs-plugin' );
 	
 	if($options['videojs_cdn'] == 'on') { //use the cdn hosted version
-		wp_register_script( 'videojs', '//vjs.zencdn.net/4.5/video.js' );
-		wp_register_style( 'videojs', '//vjs.zencdn.net/4.5/video-js.css' );
+		wp_register_script( 'videojs', '//vjs.zencdn.net/5.4.6/video.min.js' );
+		wp_register_style( 'videojs', '//vjs.zencdn.net/5.4.6/video-js.min.css' );
 		wp_enqueue_style( 'videojs' );
 	} else { //use the self hosted version
-		wp_register_script( 'videojs', plugins_url( 'videojs/video.js' , __FILE__ ) );
-		wp_register_style( 'videojs', plugins_url( 'videojs/video-js.css' , __FILE__ ) );
+		wp_register_script( 'videojs', plugins_url( 'videojs/video.min.js' , __FILE__ ) );
+		wp_register_style( 'videojs', plugins_url( 'videojs/video-js.min.css' , __FILE__ ) );
 		wp_enqueue_style( 'videojs' );
 	}
 	
-	wp_register_script( 'videojs-youtube', plugins_url( 'videojs/vjs.youtube.js' , __FILE__ ) );
+	wp_register_script( 'videojs-youtube', plugins_url( 'videojs/vjs.youtube.min.js' , __FILE__ ) );
 }
 add_action( 'wp_enqueue_scripts', 'register_videojs' );
 
@@ -51,7 +51,6 @@ function add_videojs_header(){
 	wp_enqueue_script( 'videojs-youtube' );
 }
 
-
 /* Include custom color styles in the site header */
 function videojs_custom_colors() {
 	$options = get_option('videojs_options');
@@ -60,10 +59,10 @@ function videojs_custom_colors() {
 		$color3 = vjs_hex2RGB($options['videojs_color_three'], true); //Background color is rgba
 		echo "
 	<style type='text/css'>
-		.vjs-default-skin { color: " . $options['videojs_color_one'] . " }
-		.vjs-default-skin .vjs-play-progress, .vjs-default-skin .vjs-volume-level { background-color: " . $options['videojs_color_two'] . " }
-		.vjs-default-skin .vjs-control-bar, .vjs-default-skin .vjs-big-play-button { background: rgba(" . $color3 . ",0.7) }
-		.vjs-default-skin .vjs-slider { background: rgba(" . $color3 . ",0.2333333333333333) }
+		.video-js { color: " . $options['videojs_color_one'] . " }
+		.video-js .vjs-play-progress, .video-js .vjs-volume-level { background-color: " . $options['videojs_color_two'] . " }
+		.video-js .vjs-control-bar, .video-js .vjs-big-play-button { background: rgba(" . $color3 . ",0.7) }
+		.video-js .vjs-slider { background: rgba(" . $color3 . ",0.2333333333333333) }
 	</style>
 		";
 	}
@@ -119,7 +118,7 @@ function video_shortcode($atts, $content=null){
 	
 	// ID is required for multiple videos to work
 	if ($id == '')
-		$id = 'example_video_id_'.rand();
+		$id = 'videojs_id_'.rand();
 
 	// MP4 Source Supplied
 	if ($mp4)
@@ -140,9 +139,15 @@ function video_shortcode($atts, $content=null){
 		$ogg_source = '';
 		
 	if ($youtube) {
-		$dataSetup['forceSSL'] = 'true';
+		//$dataSetup['forceSSL'] = 'true';
 		$dataSetup['techOrder'] = array("youtube");
-		$dataSetup['src'] = $youtube;
+		$dataSetup['sources'] = array(array(
+        "type" => "video/youtube",
+        "src" => $youtube
+        ));
+        $dataSetup['youtube'] = array(
+        "iv_load_policy" => 3
+        );
 	}
 	// Poster image supplied
 	if ($poster)
@@ -191,6 +196,13 @@ function video_shortcode($atts, $content=null){
 		$track = do_shortcode($content);
 	else
 		$track = "";
+    
+    // Responsive Fluid
+    if($options['videojs_responsive'] == 'on')  //add the responsive css	
+		$fluid = " vjs-fluid";
+    	else
+		$fluid = "";
+
 
 	$jsonDataSetup = str_replace('\\/', '/', json_encode($dataSetup));
 
@@ -198,7 +210,7 @@ function video_shortcode($atts, $content=null){
 	$videojs = <<<_end_
 
 	<!-- Begin Video.js -->
-	<video id="{$id}" class="video-js vjs-default-skin{$class}" width="{$width}" height="{$height}"{$poster_attribute}{$controls_attribute}{$preload_attribute}{$autoplay_attribute}{$loop_attribute}{$muted_attribute} data-setup='{$jsonDataSetup}'>
+	<video id="{$id}" class="video-js{$class}{$fluid}" width="{$width}" height="{$height}"{$poster_attribute}{$controls_attribute}{$preload_attribute}{$autoplay_attribute}{$loop_attribute}{$muted_attribute} data-setup='{$jsonDataSetup}'>
 		{$mp4_source}
 		{$webm_source}
 		{$ogg_source}{$track}
@@ -206,25 +218,6 @@ function video_shortcode($atts, $content=null){
 	<!-- End Video.js -->
 
 _end_;
-	
-	if($options['videojs_responsive'] == 'on') { //add the responsive wrapper
-		
-		$ratio = ($height && $width) ? $height/$width*100 : 56.25; //Set the aspect ratio (default 16:9)
-		
-		$maxwidth = ($width) ? "max-width:{$width}px" : ""; //Set the max-width
-		
-		$videojs = <<<_end_
-		
-		<!-- Begin Video.js Responsive Wrapper -->
-		<div style='{$maxwidth}'>
-			<div class='video-wrapper' style='padding-bottom:{$ratio}%;'>
-				{$videojs}
-			</div>
-		</div>
-		<!-- End Video.js Responsive Wrapper -->
-		
-_end_;
-	}
 	
 	return $videojs;
 

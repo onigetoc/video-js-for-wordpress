@@ -29,14 +29,53 @@ add_filter('contextual_help', 'videojs_help', 10, 3);
 
 
 function videojs_settings() {
+    
 	if (!current_user_can('manage_options'))  {
 		wp_die( __('You do not have sufficient permissions to access this page.') );
 	}
 	?>
 	<div class="wrap">
-	<h2>Video.js Settings</h2>
+<!--	<h2>Video.js Settings</h2>-->
+        <h2><span class="dashicons dashicons-admin-generic" style="line-height: inherit;"></span> <?php echo NAME ?>
+        Settings</h2>
+
 	
 	<form method="post" action="options.php">
+
+        <form action="" method="post">
+  <input name="action" type="hidden" value="update">
+
+  <table class="wp-list-table widefat fixed bookmarks">
+    <thead>
+      <tr>
+        <th>
+        <?php echo NAME ?> ( version: 5.4.6 ) <?php 
+        
+        $options = get_option('videojs_options');
+        if($options['videojs_cdn'] != 'on') { 
+            echo "Self Hosted Version"; 
+        } 
+        else {
+            echo "CDN hosted Version"; 
+        }
+        ?>
+          </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+<!--
+................
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+-->
+
+        
 	<?php
 	settings_fields( 'videojs_options' );
 	do_settings_sections( 'videojs-settings' );
@@ -44,10 +83,18 @@ function videojs_settings() {
 	<p class="submit">
 	<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
 	</p>
+    <hr>
 	<h2>Using Video.js</h2>
 	<?php echo file_get_contents(plugin_dir_path( __FILE__ ) . 'help.html'); ?>
+        
+<!-- CLOSE TABLE-->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+            
 	</form>
-	</div>
+</div> <!--	WRAP END-->
 	<?php
 	
 }
@@ -116,7 +163,7 @@ function videojs_options_validate($input) {
 
 /* Display the input fields */
 
-function defaults_output() {
+function defaults_output() { //Layout
 	//echo '';
 }
 
@@ -190,7 +237,7 @@ register_activation_hook(plugin_dir_path( __FILE__ ) . 'video-js.php', 'add_defa
 function add_defaults_fn() {
 	$tmp = get_option('videojs_options');
     if(($tmp['videojs_reset']=='on')||(!is_array($tmp))) {
-		$arr = array("videojs_height"=>"264","videojs_width"=>"640","videojs_preload"=>"","videojs_autoplay"=>"","videojs_responsive"=>"","videojs_cdn"=>"on","videojs_color_one"=>"#ccc","videojs_color_two"=>"#66A8CC","videojs_color_three"=>"#000","videojs_video_shortcode"=>"on","videojs_reset"=>"");
+		$arr = array("videojs_height"=>"360","videojs_width"=>"640","videojs_preload"=>"","videojs_autoplay"=>"","videojs_responsive"=>"","videojs_cdn"=>"on","videojs_color_one"=>"#ccc","videojs_color_two"=>"#66A8CC","videojs_color_three"=>"#000","videojs_video_shortcode"=>"on","videojs_reset"=>"");
 		update_option('videojs_options', $arr);
 		update_option("videojs_db_version", "1.0");
 	}
