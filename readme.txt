@@ -26,7 +26,7 @@ View [videojs.com](http://videojs.com) for additional information.
 
 ##Video Pro - Skin builder
 Build your own skin with Video Pro, Allo you to create your own skin or use the prebuilds demos skins to start and help you creating you own skin.
-more infos at: [Video Pro sking builder](http://www.scriptsmashup.com/product/video-pro-skin-builder) 
+more infos at: [Video Pro skin builder](http://www.scriptsmashup.com/product/video-pro-skin-builder) 
 
 == Installation ==
 
