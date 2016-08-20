@@ -8,7 +8,7 @@ Stable tag: 4.5.0
 License: LGPLv3
 License URI: http://www.gnu.org/licenses/lgpl-3.0.html
 
-Embed MP4, M4V, OGG, Youtube, WebM, FLV videos in your post or page using HTML5. Self-hosted or CDN hosted responsive HTML5 Video player.
+Embed MP4, M4V, OGG, Youtube, WebM, FLV videos in your post or page using HTML5. Self-hosted or CDN hosted responsive HTML5 Video player.  Based on Videojs but updated to the latest version. 5.0+
 
 == Description ==
 
@@ -23,10 +23,6 @@ View [videojs.com](http://videojs.com) for additional information.
 * Use the [videojs] shortcode in your post or page using the following options.
 * Can use the Wordpress default [video] shortcode.
 * Compatible with the old Videojs version.
-
-##Video Pro - Skin builder
-Build your own skin with Video Pro, Allo you to create your own skin or use the prebuilds demos skins to start and help you creating you own skin.
-more infos at: [Video Pro skin builder](http://www.scriptsmashup.com/product/video-pro-skin-builder) 
 
 == Installation ==
 
