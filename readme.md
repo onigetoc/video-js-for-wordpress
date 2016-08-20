@@ -1,20 +1,12 @@
 # HTML5 Video Player for Wordpress 
-**Contributors:** onigetoc, nosecreek, Steve Heffernan, schnere
-  
-**Donate link:** http://www.scriptsmashup.com/donation
-  
-**Tags:** html5, video, player, javascript
-  
-**Requires at least:** 2.7
-  
-**Tested up to:** 3.9
-  
-**Stable tag:** 4.5.0
-  
-**License:** LGPLv3
-  
-**License URI:** http://www.gnu.org/licenses/lgpl-3.0.html
-  
+**Contributors:** onigetoc, nosecreek, Steve Heffernan, schnere  
+**Donate link:** http://www.scriptsmashup.com/donation  
+**Tags:** html5, video, player, javascript  
+**Requires at least:** 2.7  
+**Tested up to:** 3.9  
+**Stable tag:** 4.5.0  
+**License:** LGPLv3  
+**License URI:** http://www.gnu.org/licenses/lgpl-3.0.html  
 
 Embed MP4, M4V, OGG, Youtube, WebM, FLV videos in your post or page using HTML5. Self-hosted or CDN hosted responsive HTML5 Video player.
 
@@ -33,6 +25,10 @@ View [videojs.com](http://videojs.com) for additional information.
 * Can use the Wordpress default [video] shortcode.
 * Compatible with the old Videojs version.
 
+##Video Pro - Skin builder
+Build your own skin with Video Pro, Allo you to create your own skin or use the prebuilds demos skins to start and help you creating you own skin.
+more infos at: [Video Pro sking builder](http://www.scriptsmashup.com/product/video-pro-skin-builder) 
+
 
 ## Installation 
 
@@ -45,8 +41,12 @@ This section describes how to install the plugin and get it working.
 
 ## Screenshots 
 
-1. Settings and options
-2. Basic Skin
+### 1. Settings and options
+[missing image]
+
+### 2. Basic Skin
+[missing image]
+
 
 ##Video Shortcode Options
 -------------------------

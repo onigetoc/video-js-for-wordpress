@@ -24,6 +24,10 @@ View [videojs.com](http://videojs.com) for additional information.
 * Can use the Wordpress default [video] shortcode.
 * Compatible with the old Videojs version.
 
+##Video Pro - Skin builder
+Build your own skin with Video Pro, Allo you to create your own skin or use the prebuilds demos skins to start and help you creating you own skin.
+more infos at: [Video Pro sking builder](http://www.scriptsmashup.com/product/video-pro-skin-builder) 
+
 == Installation ==
 
 This section describes how to install the plugin and get it working.
