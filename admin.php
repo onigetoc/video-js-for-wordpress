@@ -34,7 +34,29 @@ function videojs_settings() {
 		wp_die( __('You do not have sufficient permissions to access this page.') );
 	}
 	?>
-	<div class="wrap">
+	
+<div class="update-nag">
+<a href="http://www.scriptsmashup.com/product/video-pro-skin-builder" target="_blank"><img src="<?php echo plugins_url('videopro-promo.jpg', __FILE__ ) ?>" alt="Video Pro - Sking builder" style="width:100px;height:100px; float:left;margin-right: 15px;"></a>
+<h3 style="margin: 0 0 8px 0;"><a href="http://www.scriptsmashup.com/product/video-pro-skin-builder" target="_blank">Get Video Pro - Skin Builder</a></h3>
+    Video player skin generator pro plugin for WordPress. Allows you to embed video in your post or page using HTML5 with Flash fallback support for non-HTML5 browsers. Flash fallback for browser compatibility. Video player for WordPress. Tool to help you <strong>create your own Skin</strong>, it work for Youtube too. HTML5 video player embed MP4, M4V, OGG, Youtube, WebM, FLV Flash videos in your post or page using HTML5. HTML5 video pro will automatically find all Youtube url, iframe or embed and will add your own video skin you created with the help of the <strong>Video skin generator</strong>. 
+    <a href="http://www.scriptsmashup.com/product/video-pro-skin-builder" target="_blank">More infos...</a>
+</div>    
+
+<div class="wrap">
+
+<!--
+<table class="wp-list-table widefat fixed bookmarks">
+  <tr>
+    <th>Table two columns th</th>    
+    <th>Used by millions, Akismet is quite possibly the best way in the world to protect your blog from spam. It keeps your site protected even while you sleep. To get started: 1) Click the "Activate" link to the left of this description, 2) Sign up for an Akismet plan to get an API key, and 3) Go to your Akismet configuration page, and save your API key.</th>
+
+  </tr>
+
+</table>        
+-->
+        
+        
+        
 <!--	<h2>Video.js Settings</h2>-->
         <h2><span class="dashicons dashicons-admin-generic" style="line-height: inherit;"></span> <?php echo NAME ?>
         Settings</h2>
@@ -42,7 +64,7 @@ function videojs_settings() {
 	
 	<form method="post" action="options.php">
 
-        <form action="" method="post">
+<!--    <form action="" method="post">-->
   <input name="action" type="hidden" value="update">
 
   <table class="wp-list-table widefat fixed bookmarks">
@@ -52,11 +74,11 @@ function videojs_settings() {
         <?php echo NAME ?> ( version: 5.4.6 ) <?php 
         
         $options = get_option('videojs_options');
-        if($options['videojs_cdn'] != 'on') { 
-            echo "Self Hosted Version"; 
+        if($options['videojs_cdn'] === 'on') { 
+            echo "CDN hosted Version"; 
         } 
         else {
-            echo "CDN hosted Version"; 
+            echo "Self Hosted Version"; 
         }
         ?>
           </th>
@@ -237,7 +259,7 @@ register_activation_hook(plugin_dir_path( __FILE__ ) . 'video-js.php', 'add_defa
 function add_defaults_fn() {
 	$tmp = get_option('videojs_options');
     if(($tmp['videojs_reset']=='on')||(!is_array($tmp))) {
-		$arr = array("videojs_height"=>"360","videojs_width"=>"640","videojs_preload"=>"","videojs_autoplay"=>"","videojs_responsive"=>"","videojs_cdn"=>"on","videojs_color_one"=>"#ccc","videojs_color_two"=>"#66A8CC","videojs_color_three"=>"#000","videojs_video_shortcode"=>"on","videojs_reset"=>"");
+		$arr = array("videojs_height"=>"360","videojs_width"=>"640","videojs_preload"=>"","videojs_autoplay"=>"","videojs_responsive"=>"on","videojs_cdn"=>"on","videojs_color_one"=>"#ccc","videojs_color_two"=>"#66A8CC","videojs_color_three"=>"#000","videojs_video_shortcode"=>"on","videojs_reset"=>"");
 		update_option('videojs_options', $arr);
 		update_option("videojs_db_version", "1.0");
 	}
